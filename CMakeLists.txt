@@ -11,6 +11,7 @@ find_package(Eigen3 REQUIRED NO_MODULE)
 add_library(slam_core
     src/Pose2.cpp
     src/ScanLogLoader.cpp
+    src/ScanUtils.cpp
 )
 
 target_include_directories(slam_core PUBLIC
