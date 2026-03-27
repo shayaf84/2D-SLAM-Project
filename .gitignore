@@ -28,6 +28,9 @@ compile_commands.json
 # Test outputs
 tests/
 
+# Data
+data/
+
 # Editor / OS files
 .vs/
 .vscode/
