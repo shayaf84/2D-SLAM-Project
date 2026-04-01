@@ -14,5 +14,9 @@ std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> findCorrespondences(
 
 Eigen::MatrixXd pointsToMatrix(const std::vector<Eigen::Vector2d> &points);
 
+Pose2 estimateRigidTransform(
+    const std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> &correspondences
+);
+
 
 #endif
