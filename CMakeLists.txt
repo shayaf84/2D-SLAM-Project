@@ -12,6 +12,7 @@ add_library(slam_core
     src/Pose2.cpp
     src/ScanLogLoader.cpp
     src/ScanUtils.cpp
+    src/ICP2D.cpp
 )
 
 target_include_directories(slam_core PUBLIC
@@ -30,7 +31,11 @@ target_link_libraries(ScanLogLoaderTests PRIVATE slam_core)
 add_executable(VisualizeScan apps/VisualizeScan.cpp)
 target_link_libraries(VisualizeScan PRIVATE slam_core)
 
+add_executable(ICPTests tests/ICP2DTests.cpp)
+target_link_libraries(ICPTests PRIVATE slam_core)
+
 enable_testing()
 
 add_test(NAME Pose2Tests COMMAND Pose2Tests)
 add_test(NAME ScanLogLoaderTests COMMAND ScanLogLoaderTests)
+add_test(NAME ICPTests COMMAND ICPTests)
