@@ -88,3 +88,19 @@ Pose2 estimateRigidTransform(
     double theta = std::atan2(rot(1,0), rot(0,0));
     return Pose2(trans.x(), trans.y(), theta);
 }
+
+Pose2 runICP(const std::vector<Eigen::Vector2d> &source, const std::vector<Eigen::Vector2d> &target) {
+    Pose2 estimate;
+    const int MAX_ITER = 20;
+    
+    for (int i = 0; i < MAX_ITER; i++) {
+        std::vector<Eigen::Vector2d> transformedSource = transformPoints(source, estimate);
+        std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> correspondences = findCorrespondences(transformedSource, target);
+        Pose2 delta = estimateRigidTransform(correspondences);
+        estimate = delta.compose(estimate);
+        if (delta.translationNorm() < 1e-3 && delta.rotationMagnitude() < 1e-3) {
+            break;
+        }
+    }
+    return estimate;
+}

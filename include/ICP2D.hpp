@@ -18,5 +18,6 @@ Pose2 estimateRigidTransform(
     const std::vector<std::pair<Eigen::Vector2d, Eigen::Vector2d>> &correspondences
 );
 
+Pose2 runICP(const std::vector<Eigen::Vector2d> &source, const std::vector<Eigen::Vector2d> &target);
 
 #endif

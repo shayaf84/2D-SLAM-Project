@@ -21,6 +21,11 @@ class Pose2 {
         Matrix2 rotation() const;
         Matrix3 homogeneousMatrix() const;
 
+
+        double translationNorm() const;
+        double rotationMagnitude() const;
+
+
         Pose2 inverse() const;
 
         Vector2 transformPoint(const Vector2 &point) const;
