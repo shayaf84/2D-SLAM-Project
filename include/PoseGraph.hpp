@@ -37,7 +37,6 @@ class PoseGraph {
         void addOdometryFactor(int from_id, int to_id, const Pose2 &measurement, const Eigen::Matrix3d &information);
         void addLoopClosureFactor(int from_id, int to_id, const Pose2 &measurement, const Eigen::Matrix3d &information);
 
-        void optimize(int iterations);
 
         const std::vector<PoseGraphNode>& nodes() const;
         const std::vector<PoseGraphEdge>& edges() const;

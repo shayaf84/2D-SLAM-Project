@@ -25,3 +25,15 @@ void PoseGraph::addLoopClosureFactor(int from_id, int to_id, const Pose2 &measur
     PoseGraphEdge toAdd = PoseGraphEdge{from_id, to_id, measurement, information, FactorType::LoopClosure};
     edges_.push_back(toAdd);
 }
+
+const std::vector<PoseGraphNode>& PoseGraph::nodes() const {
+    return nodes_;
+}
+
+const std::vector<PoseGraphEdge>& PoseGraph::edges() const {
+    return edges_;
+}
+
+const std::vector<PriorFactor>& PoseGraph::priors() const {
+    return priors_;
+}
