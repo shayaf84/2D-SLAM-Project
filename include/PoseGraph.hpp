@@ -29,6 +29,24 @@ struct PriorFactor {
     Eigen::Matrix3d information;
 };
 
+class PoseGraph {
+    public:
+        PoseGraph();
+        int addNode(const Pose2 &pose_estimate);
+        void addPriorFactor(int node_id, const Pose2 &measurement, const Eigen::Matrix3d &information);
+        void addOdometryFactor(int from_id, int to_id, const Pose2 &measurement, const Eigen::Matrix3d &information);
+        void addLoopClosureFactor(int from_id, int to_id, const Pose2 &measurement, const Eigen::Matrix3d &information);
 
+        void optimize(int iterations);
+
+        const std::vector<PoseGraphNode>& nodes() const;
+        const std::vector<PoseGraphEdge>& edges() const;
+        const std::vector<PriorFactor>& priors() const;
+    
+    private:
+        std::vector<PoseGraphNode> nodes_;
+        std::vector<PoseGraphEdge> edges_;
+        std::vector<PriorFactor> priors_;
+};
 
 #endif
