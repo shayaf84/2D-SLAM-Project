@@ -46,6 +46,14 @@ Pose2::Matrix3 Pose2::homogeneousMatrix() const {
     return transform;
 }
 
+double Pose2::translationNorm() const {
+    return std::sqrt(x_ * x_ + y_ * y_);
+}
+
+double Pose2::rotationMagnitude() const {
+    return std::abs(theta_);
+}
+
 Pose2 Pose2::inverse() const {
     double c = std::cos(theta_);
     double s = std::sin(theta_);
